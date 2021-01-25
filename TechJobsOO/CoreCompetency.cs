@@ -1,49 +1,53 @@
 ﻿using System;
 namespace TechJobsOO
 {
-    public class CoreCompetency
+    public class CoreCompetency : JobField
     {
-        //private int id;
 
-        private static int nextId = 1;
-        //private string value;
+        public CoreCompetency(string value) : base(value) { }
 
-        // TODO: Change the fields to auto-implemented properties.
-        public int Id { get; set; }
-        public string Value { get; set; }
-
-        public CoreCompetency()
-        {
-            Id = nextId;
-            //id = nextId;
-            nextId++;
-        }
-
-        public CoreCompetency(string v) : this()
-        {
-            Value = v;
-            // value = v;
-        }
 
         public override bool Equals(object obj)
         {
-            //return obj is CoreCompetency competency &&
-            //       id == competency.id;
             return obj is CoreCompetency competency &&
                    Id == competency.Id;
         }
 
-        public override int GetHashCode()
-        {
-            //return HashCode.Combine(id);
-            return HashCode.Combine(Id);
-        }
 
-        public override string ToString()
-        {
-            //return value;
-            return Value;
-        }
+
+        //private int id;
+
+        //private static int nextId = 1;
+        ////private string value;
+
+        //// TODO: Change the fields to auto-implemented properties.
+        //public int Id { get; }
+        //public string Value { get; set; }
+
+        //public CoreCompetency()
+        //{
+        //    Id = nextId;
+        //    //id = nextId;
+        //    nextId++;
+        //}
+
+        //public CoreCompetency(string value) : this()
+        //{
+        //    Value = value;
+        //    // value = v;
+        //}
+
+
+
+        //public override int GetHashCode()
+        //{
+        //    return HashCode.Combine(Id);
+        //}
+
+        //public override string ToString()
+        //{
+        //    return Value;
+        //}
     }
     
 }

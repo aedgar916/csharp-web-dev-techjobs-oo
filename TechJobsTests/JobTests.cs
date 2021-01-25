@@ -46,5 +46,38 @@ namespace TechJobsTests
             Assert.AreEqual(false, job1.Equals(job2));
         }
 
+        [TestMethod]
+        public void TestToStringBeginsAndEndsWithBlankLines()
+        {
+            Job job = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+
+            Assert.AreEqual(true, job.ToString().StartsWith("\n"));
+            Assert.AreEqual(true, job.ToString().EndsWith("\n"));
+        }
+
+        [TestMethod]
+        public void TestToStringFieldsAreLabeled()
+        {
+            Job job = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+
+            Assert.AreEqual(true, job.ToString().Contains($"Id: {job.Id}"));
+            Assert.AreEqual(true, job.ToString().Contains("Name: Product tester"));
+            Assert.AreEqual(true, job.ToString().Contains("Employer: ACME"));
+            Assert.AreEqual(true, job.ToString().Contains("Location: Desert"));
+            Assert.AreEqual(true, job.ToString().Contains("Position Type: Quality control"));
+            Assert.AreEqual(true, job.ToString().Contains("Core Competency: Persistence"));
+        }
+
+        [TestMethod]
+        public void TestForDataNotAvailable()
+        {
+            Job job = new Job("", new Employer(""), new Location(""), new PositionType(""),new CoreCompetency(""));
+
+            Assert.AreEqual(true, job.ToString().Contains("Name: Data Not Available"));
+            Assert.AreEqual(true, job.ToString().Contains("Employer: Data Not Available"));
+            Assert.AreEqual(true, job.ToString().Contains("Location: Data Not Available"));
+            Assert.AreEqual(true, job.ToString().Contains("Position Type: Data Not Available"));
+            Assert.AreEqual(true, job.ToString().Contains("Core Competency: Data Not Available"));
+        }
     }
 }
